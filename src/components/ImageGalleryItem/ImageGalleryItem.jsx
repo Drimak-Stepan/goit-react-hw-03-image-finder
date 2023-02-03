@@ -21,4 +21,5 @@ ImageGalleryItem.propTypes = {
   largeImageUR: PropTypes.string.isRequired,
 
   onSelect: PropTypes.func,
+
 };

@@ -35,7 +35,7 @@ class Searchbar extends Component {
           <SearchFormInput
             type="text"
             name="query"
-            value={this.query}
+            value={this.state.query}
             onChange={this.handleNameChange}
             autocomplete="off"
             autoFocus

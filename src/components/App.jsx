@@ -29,14 +29,13 @@ class App extends React.Component {
     const prevPage = prevState.page;
     const nextPage = this.state.page;
     if (prevPage !== nextPage || prevQuery !== nextQuery) {
-      scrollToTop();
+      
       this.setState({ status: 'pending' });
       API.fetchImage(nextQuery, nextPage)
         .then(items => {
           const { hits } = items;
           this.setState(() => ({
-            items: [...prevState.items, ...hits],
-            status: 'resolved',
+            items: [...prevState.items, ...hits],status: 'resolved',
           }));
           scrollHandler();
         })
@@ -44,7 +43,7 @@ class App extends React.Component {
     }
   }
   handleFormSubmit = query => {
-    this.setState({ query, page: 1, items: [] });
+    this.setState({ query, page: 1, items: [] });scrollToTop();
   };
 
   loadMore = () => {
@@ -73,10 +72,10 @@ class App extends React.Component {
             <h2>{error.message}</h2>
           </Block>
         )}
-        {status === 'resolved' && (
+        {items.length > 0 && (
           <ImageGallery items={items} onSelect={this.onSelectImg} />
         )}
-        {items.length > 0 && <Button onClick={this.loadMore}>Lore more</Button>}
+        {items.length > 11 && <Button onClick={this.loadMore}>Lore more</Button>}
         {status === 'pending' && (
           <Block>
             <Loader />
