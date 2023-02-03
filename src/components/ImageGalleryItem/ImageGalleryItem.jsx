@@ -18,7 +18,7 @@ export default ImageGalleryItem;
 ImageGalleryItem.propTypes = {
   webformatURL: PropTypes.string.isRequired,
   tags: PropTypes.string.isRequired,
-  largeImageURLs: PropTypes.string,
+  largeImageUR: PropTypes.string.isRequired,
 
   onSelect: PropTypes.func,
 };
